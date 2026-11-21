@@ -41,6 +41,8 @@
 
 	async function handleRegister() {
 
+		isLoading.value = true;
+
 		try {
 
 			const response = await api.post('/users/register', {
@@ -57,6 +59,10 @@
 		} catch (err) {
 
 			notyf.error(err.response.data.message);
+
+		} finally {
+
+			isLoading.value = false;
 
 		}
 
